@@ -75,6 +75,8 @@ service PD {
     rpc SyncRegions(stream SyncRegionRequest) returns (stream SyncRegionResponse) {}
 
     rpc GetOperator(GetOperatorRequest) returns (GetOperatorResponse) {}
+
+    rpc CheckRegion(CheckRegionRequest) returns (CheckRegionResponse) {}
 }
 
 message RequestHeader {
@@ -581,4 +583,14 @@ message GetOperatorResponse {
     bytes desc = 3;
     OperatorStatus status = 4;
     bytes kind = 5;
+}
+
+message CheckRegionRequest {
+    RequestHeader header = 1;
+    uint64 region_id = 2;
+}
+
+message CheckRegionResponse {
+    ResponseHeader header = 1;
+    bool pass = 2;
 }
