@@ -4,6 +4,7 @@ package pdpb;
 import "metapb.proto";
 import "eraftpb.proto";
 import "replication_modepb.proto";
+import "kvrpcpb.proto";
 
 import "gogoproto/gogo.proto";
 import "rustproto.proto";
@@ -77,6 +78,9 @@ service PD {
     rpc GetOperator(GetOperatorRequest) returns (GetOperatorResponse) {}
 
     rpc SyncMaxTS(SyncMaxTSRequest) returns (SyncMaxTSResponse) {}
+
+    // Sent from PD or TiDB to a TiKV node.
+    rpc SplitRegion (kvrpcpb.SplitRegionRequest) returns (kvrpcpb.SplitRegionResponse) {}
 }
 
 message RequestHeader {
