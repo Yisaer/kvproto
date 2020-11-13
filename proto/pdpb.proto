@@ -522,7 +522,7 @@ message StoreHeartbeatResponse {
 message ScatterRegionRequest {
     RequestHeader header = 1;
 
-    uint64 region_id = 2 [deprecated=true];
+    uint64 region_id = 2;
 
     // PD will use these region information if it can't find the region.
     // For example, the region is just split and hasn't report to PD yet.
